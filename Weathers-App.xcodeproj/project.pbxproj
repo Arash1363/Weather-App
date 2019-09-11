@@ -7,27 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B487A0323230D90000CDC06 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B487A0123230D90000CDC06 /* DataModel.xcdatamodeld */; };
 		5B6DD10C23106802004FB7AB /* AddCityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6DD10B23106802004FB7AB /* AddCityTableViewController.swift */; };
-		5B94905823118B310000D00A /* MyProject.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B94905723118B310000D00A /* MyProject.bundle */; };
-		5B9F10FC230EF3A200B0865D /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9F10FB230EF3A200B0865D /* ChangeCityViewController.swift */; };
+		5B9F10FC230EF3A200B0865D /* ChangeCityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9F10FB230EF3A200B0865D /* ChangeCityTableViewController.swift */; };
 		5BA59E23230B1BBB00A144D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59E22230B1BBB00A144D7 /* AppDelegate.swift */; };
 		5BA59E25230B1BBB00A144D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59E24230B1BBB00A144D7 /* ViewController.swift */; };
 		5BA59E28230B1BBB00A144D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA59E26230B1BBB00A144D7 /* Main.storyboard */; };
 		5BA59E2A230B1BBD00A144D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BA59E29230B1BBD00A144D7 /* Assets.xcassets */; };
 		5BA59E2D230B1BBD00A144D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA59E2B230B1BBD00A144D7 /* LaunchScreen.storyboard */; };
 		5BA59E36230B2BE600A144D7 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59E35230B2BE500A144D7 /* CurrentWeather.swift */; };
-		5BA59E3A230B2D3400A144D7 /* WeatherIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59E39230B2D3400A144D7 /* WeatherIcon.swift */; };
-		5BA59E3C230B38B200A144D7 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59E3B230B38B200A144D7 /* CurrentWeatherViewModel.swift */; };
-		5BFDAE9223119CA600848B54 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFDAE9123119CA600848B54 /* Item.swift */; };
 		82DAEEBF68A1466BE3322683 /* Pods_Weathers_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AA5D3FF20CBB1530D3936F /* Pods_Weathers_App.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		00DE1E0AABE743E6DE74F211 /* Pods-Weathers-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathers-App.release.xcconfig"; path = "Target Support Files/Pods-Weathers-App/Pods-Weathers-App.release.xcconfig"; sourceTree = "<group>"; };
 		34AA5D3FF20CBB1530D3936F /* Pods_Weathers_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weathers_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B487A0223230D90000CDC06 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		5B6DD10B23106802004FB7AB /* AddCityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityTableViewController.swift; sourceTree = "<group>"; };
-		5B94905723118B310000D00A /* MyProject.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MyProject.bundle; sourceTree = "<group>"; };
-		5B9F10FB230EF3A200B0865D /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
+		5B9F10FB230EF3A200B0865D /* ChangeCityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityTableViewController.swift; sourceTree = "<group>"; };
 		5BA59E1F230B1BBB00A144D7 /* Weathers-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weathers-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA59E22230B1BBB00A144D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BA59E24230B1BBB00A144D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,9 +33,6 @@
 		5BA59E2C230B1BBD00A144D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BA59E2E230B1BBD00A144D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BA59E35230B2BE500A144D7 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
-		5BA59E39230B2D3400A144D7 /* WeatherIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIcon.swift; sourceTree = "<group>"; };
-		5BA59E3B230B38B200A144D7 /* CurrentWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewModel.swift; sourceTree = "<group>"; };
-		5BFDAE9123119CA600848B54 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		E93DF1C4B185757A487D2954 /* Pods-Weathers-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathers-App.debug.xcconfig"; path = "Target Support Files/Pods-Weathers-App/Pods-Weathers-App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,9 +90,7 @@
 				5BA59E37230B2BEE00A144D7 /* View */,
 				5BA59E34230B2B0600A144D7 /* Model */,
 				5BA59E29230B1BBD00A144D7 /* Assets.xcassets */,
-				5BA59E2B230B1BBD00A144D7 /* LaunchScreen.storyboard */,
 				5BA59E2E230B1BBD00A144D7 /* Info.plist */,
-				5B94905723118B310000D00A /* MyProject.bundle */,
 			);
 			path = "Weathers-App";
 			sourceTree = "<group>";
@@ -107,9 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				5BA59E35230B2BE500A144D7 /* CurrentWeather.swift */,
-				5BA59E39230B2D3400A144D7 /* WeatherIcon.swift */,
-				5BA59E3B230B38B200A144D7 /* CurrentWeatherViewModel.swift */,
-				5BFDAE9123119CA600848B54 /* Item.swift */,
+				5B487A0123230D90000CDC06 /* DataModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -118,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				5BA59E26230B1BBB00A144D7 /* Main.storyboard */,
+				5BA59E2B230B1BBD00A144D7 /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -128,7 +119,7 @@
 				5BA59E22230B1BBB00A144D7 /* AppDelegate.swift */,
 				5BA59E24230B1BBB00A144D7 /* ViewController.swift */,
 				5B6DD10B23106802004FB7AB /* AddCityTableViewController.swift */,
-				5B9F10FB230EF3A200B0865D /* ChangeCityViewController.swift */,
+				5B9F10FB230EF3A200B0865D /* ChangeCityTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -194,7 +185,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BA59E2D230B1BBD00A144D7 /* LaunchScreen.storyboard in Resources */,
-				5B94905823118B310000D00A /* MyProject.bundle in Resources */,
 				5BA59E2A230B1BBD00A144D7 /* Assets.xcassets in Resources */,
 				5BA59E28230B1BBB00A144D7 /* Main.storyboard in Resources */,
 			);
@@ -251,12 +241,10 @@
 			files = (
 				5BA59E25230B1BBB00A144D7 /* ViewController.swift in Sources */,
 				5B6DD10C23106802004FB7AB /* AddCityTableViewController.swift in Sources */,
-				5BA59E3A230B2D3400A144D7 /* WeatherIcon.swift in Sources */,
-				5BA59E3C230B38B200A144D7 /* CurrentWeatherViewModel.swift in Sources */,
-				5BFDAE9223119CA600848B54 /* Item.swift in Sources */,
 				5BA59E36230B2BE600A144D7 /* CurrentWeather.swift in Sources */,
+				5B487A0323230D90000CDC06 /* DataModel.xcdatamodeld in Sources */,
 				5BA59E23230B1BBB00A144D7 /* AppDelegate.swift in Sources */,
-				5B9F10FC230EF3A200B0865D /* ChangeCityViewController.swift in Sources */,
+				5B9F10FC230EF3A200B0865D /* ChangeCityTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +446,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5B487A0123230D90000CDC06 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5B487A0223230D90000CDC06 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 5B487A0223230D90000CDC06 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5BA59E17230B1BBB00A144D7 /* Project object */;
 }

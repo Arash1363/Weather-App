@@ -11,6 +11,8 @@ import Foundation
 class CurrentWeather {
     
     var tempreature : Double = 0.0
+    var tempreatureC : Double = 0.0
+    var tempreatureF : Double = 0.0
     var humidity : Double = 0.0
     var precipitaionProbability : Int = 0
     var summary : String = ""

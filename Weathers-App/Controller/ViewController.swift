@@ -11,8 +11,9 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 
-class ViewController: UIViewController , CLLocationManagerDelegate , ChangeCityDelegate {
-   
+class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityDelegate{
+
+
     //MARK:Define API
     
     fileprivate let ApiKey = "9f2ad630fb65dd2f44a2752a4933b2c9"
@@ -22,6 +23,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ChangeCityD
     
     let locationManager = CLLocationManager()
     var currentWeather = CurrentWeather()
+    
     //MARK:Outlet
     
     @IBOutlet weak var cityName: UILabel!
@@ -29,7 +31,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ChangeCityD
     @IBOutlet weak var humidityPercent: UILabel!
     @IBOutlet weak var rainPercent: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
-    //@IBOutlet weak var segmentTempValue: UISegmentedControl!
+    @IBOutlet weak var segmentTempValue: UISegmentedControl!
     
     //MARK:Actions
     
@@ -44,17 +46,33 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ChangeCityD
         
     }
 
-    @IBAction func changeCity(_ sender: Any) {
-    
-        performSegue(withIdentifier: "changeCity", sender: self)
+    @IBAction func changeCity(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "ManageCityItem", sender: self)
         
     }
     
-    @IBAction func reloadButton(_ sender: Any) {
+    @IBAction func reloadButton(_ sender: UIButton) {
     
+        updateDataUI()
+        
     }
     
-    
+    @IBAction func segmentChanged(_ sender: Any?) {
+        let tempF = currentWeather.tempreatureF
+        let tempC = currentWeather.tempreatureC
+        
+        if segmentTempValue.selectedSegmentIndex == 0 {
+            
+            currentWeather.tempreature = tempC
+        }
+        if segmentTempValue.selectedSegmentIndex == 1 {
+            
+            currentWeather.tempreature = tempF
+        }
+        
+            updateDataUI()
+    }
     //MARK:Networking
     
     func getWeatherData(url : String , parameters : [String : String]) {
@@ -62,7 +80,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ChangeCityD
         Alamofire.request(url , method: .get , parameters: parameters).responseJSON {
             respone in
             if respone.result.isSuccess {
-                
+                print("Success result data")
                 let weatherJson : JSON = JSON(respone.result.value!)
                 print(weatherJson)
                 self.updateWeatherData(json: weatherJson)
@@ -98,8 +116,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ChangeCityD
     //MARK:Update Location Failed
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        
-        print("Error")
+ 
         cityName.text = "Location Unavailable"
     
     }
@@ -109,38 +126,26 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ChangeCityD
     func updateWeatherData (json : JSON) {
         
         if let tempResult = json["currently"]["temperature"].double{
-            currentWeather.tempreature = Double(tempResult - 32) / 1.8
+            currentWeather.tempreatureF = Double(tempResult)
+            currentWeather.tempreatureC = Double(tempResult - 32) / 1.8
+            currentWeather.tempreature = currentWeather.tempreatureC
         currentWeather.city = json["timezone"].stringValue
         currentWeather.summary = json["minutely"]["summary"].stringValue
         currentWeather.humidity = json["currently"]["humidity"].double!
         currentWeather.precipitaionProbability = json["currently"]["precipProbability"].int!
-        //currentWeather.icon = json["icon"].stringValue
+        currentWeather.iconName = json["currently"]["icon"].stringValue
+    
         //currentWeather.iconName = currentWeather.updateWeatherIcon(rawValue: String)
+        print(currentWeather.iconName)
+        updateDataUI()
         }
         else {
             cityName.text = "Weather Unavialble"
         }
-            updateDataUI()
-        
+  
     }
-    
-    //MARK:Implement Delegate Method
-    
-    func setCity(city: String) {
-        
-        cityName.text = city
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "changeCity" {
-                let desVC = segue.destination as! ChangeCityViewController
-                desVC.delegate = self
-                
-        }
-    }
-    
+
+
     func updateDataUI () {
         
         cityName.text = currentWeather.city
@@ -150,5 +155,14 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ChangeCityD
         
         
     }
+    
+    //MARK : - Implement Method Delegate
+  
+func managedCity(city: String) {
+    
+    currentWeather.city = city
+    updateDataUI()
+    
 }
 
+}
