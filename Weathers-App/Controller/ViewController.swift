@@ -16,8 +16,8 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
 
     //MARK:Define API
     
-    fileprivate let ApiKey = "9f2ad630fb65dd2f44a2752a4933b2c9"
-    let WeayherUrl =  "https://api.darksky.net/forecast/9f2ad630fb65dd2f44a2752a4933b2c9/37.8267,-122.4233"
+    fileprivate let ApiKey = "c26ca9f48d914e931409cc37b7736f03"
+    let WeayherUrl =  "https://api.openweathermap.org/data/2.5/forecast"
     
     //TODO:Define Instance
     
@@ -29,7 +29,8 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var tempreatureLabel: UILabel!
     @IBOutlet weak var humidityPercent: UILabel!
-    @IBOutlet weak var rainPercent: UILabel!
+    @IBOutlet weak var maxValue: UILabel!
+    @IBOutlet weak var minValue: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var segmentTempValue: UISegmentedControl!
     
@@ -59,16 +60,25 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
     }
     
     @IBAction func segmentChanged(_ sender: Any?) {
+       
         let tempF = currentWeather.tempreatureF
         let tempC = currentWeather.tempreatureC
+        let minTempF = currentWeather.minTempF
+        let minTempC = currentWeather.minTempC
+        let maxTempF = currentWeather.maxTempF
+        let maxTempC = currentWeather.maxTempC
         
         if segmentTempValue.selectedSegmentIndex == 0 {
             
             currentWeather.tempreature = tempC
+            currentWeather.minTemp = minTempC
+            currentWeather.maxTemp = maxTempC
         }
         if segmentTempValue.selectedSegmentIndex == 1 {
             
             currentWeather.tempreature = tempF
+            currentWeather.minTemp = minTempF
+            currentWeather.maxTemp = maxTempF   
         }
         
             updateDataUI()
@@ -80,7 +90,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
         Alamofire.request(url , method: .get , parameters: parameters).responseJSON {
             respone in
             if respone.result.isSuccess {
-                print("Success result data")
+               
                 let weatherJson : JSON = JSON(respone.result.value!)
                 print(weatherJson)
                 self.updateWeatherData(json: weatherJson)
@@ -88,8 +98,8 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
             }
             else {
                 
-                print("Error \(String(describing: respone.result.error))")
                 self.cityName.text = "Connection Issues"
+            
             }
         }
         
@@ -106,6 +116,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
             let latitude = String(location.coordinate.latitude)
             let longitude = String(location.coordinate.longitude)
             let params : [String : String] = ["lat" : latitude , "lon" : longitude , "appid" : ApiKey]
+            
             getWeatherData(url: WeayherUrl, parameters: params)
             
         
@@ -125,16 +136,25 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
     
     func updateWeatherData (json : JSON) {
         
-        if let tempResult = json["currently"]["temperature"].double{
-            currentWeather.tempreatureF = Double(tempResult)
-            currentWeather.tempreatureC = Double(tempResult - 32) / 1.8
+        if let tempResult = json["list"][0]["main"]["temp"].double{
+            print("temp is in \(tempResult)")
+            currentWeather.tempreatureF = Double(tempResult - 273.15) * 1.8
+            currentWeather.tempreatureC = Double(tempResult - 273.15)
             currentWeather.tempreature = currentWeather.tempreatureC
-        currentWeather.city = json["timezone"].stringValue
-        currentWeather.summary = json["minutely"]["summary"].stringValue
-        currentWeather.humidity = json["currently"]["humidity"].double!
-        currentWeather.precipitaionProbability = json["currently"]["precipProbability"].int!
-        currentWeather.iconName = json["currently"]["icon"].stringValue
-    
+            currentWeather.minTempK = json["list"][0]["main"]["temp_min"].double!
+            currentWeather.maxTempK = json["list"][0]["main"]["temp_max"].double!
+            currentWeather.minTempF = Double(currentWeather.minTempK - 273.15) * 1.8
+            currentWeather.minTempC = Double(currentWeather.minTempK - 273)
+            currentWeather.maxTempF = Double(currentWeather.maxTempK - 273.15) * 1.8
+            currentWeather.maxTempC = Double(currentWeather.maxTempK - 273.15)
+            currentWeather.minTemp = currentWeather.minTempC
+            currentWeather.maxTemp = currentWeather.maxTempC
+            currentWeather.city = json["city"]["name"].stringValue
+        currentWeather.summary = json["list"][0]["weather"][0]["description"].stringValue
+        currentWeather.humidity = json["list"][0]["main"]["humidity"].double!
+        currentWeather.pressure = json["list"][0]["main"]["pressure"].double!
+        currentWeather.iconName = json["list"][0]["weather"][0]["icon"].stringValue
+            
         //currentWeather.iconName = currentWeather.updateWeatherIcon(rawValue: String)
         print(currentWeather.iconName)
         updateDataUI()
@@ -152,7 +172,8 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
         tempreatureLabel.text = String(currentWeather.tempreature)
         humidityPercent.text = String(currentWeather.humidity)
         summaryLabel.text = currentWeather.summary
-        
+        minValue.text = String(currentWeather.minTemp)
+        maxValue.text = String(currentWeather.maxTemp)
         
     }
     
