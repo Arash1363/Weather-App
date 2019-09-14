@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5B487A0323230D90000CDC06 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B487A0123230D90000CDC06 /* DataModel.xcdatamodeld */; };
 		5B6DD10C23106802004FB7AB /* AddCityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6DD10B23106802004FB7AB /* AddCityTableViewController.swift */; };
-		5B9F10FC230EF3A200B0865D /* ChangeCityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9F10FB230EF3A200B0865D /* ChangeCityTableViewController.swift */; };
 		5BA59E23230B1BBB00A144D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59E22230B1BBB00A144D7 /* AppDelegate.swift */; };
 		5BA59E25230B1BBB00A144D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59E24230B1BBB00A144D7 /* ViewController.swift */; };
 		5BA59E28230B1BBB00A144D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA59E26230B1BBB00A144D7 /* Main.storyboard */; };
@@ -24,7 +23,6 @@
 		34AA5D3FF20CBB1530D3936F /* Pods_Weathers_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weathers_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B487A0223230D90000CDC06 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		5B6DD10B23106802004FB7AB /* AddCityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityTableViewController.swift; sourceTree = "<group>"; };
-		5B9F10FB230EF3A200B0865D /* ChangeCityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityTableViewController.swift; sourceTree = "<group>"; };
 		5BA59E1F230B1BBB00A144D7 /* Weathers-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weathers-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA59E22230B1BBB00A144D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BA59E24230B1BBB00A144D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 				5BA59E22230B1BBB00A144D7 /* AppDelegate.swift */,
 				5BA59E24230B1BBB00A144D7 /* ViewController.swift */,
 				5B6DD10B23106802004FB7AB /* AddCityTableViewController.swift */,
-				5B9F10FB230EF3A200B0865D /* ChangeCityTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -244,7 +241,6 @@
 				5BA59E36230B2BE600A144D7 /* CurrentWeather.swift in Sources */,
 				5B487A0323230D90000CDC06 /* DataModel.xcdatamodeld in Sources */,
 				5BA59E23230B1BBB00A144D7 /* AppDelegate.swift in Sources */,
-				5B9F10FC230EF3A200B0865D /* ChangeCityTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

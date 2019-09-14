@@ -38,6 +38,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
         //TODO:Setup Location Manager
         locationManager.delegate = self
@@ -111,14 +112,12 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations[locations.count - 1]
+        
         if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
-            let latitude = String(location.coordinate.latitude)
-            let longitude = String(location.coordinate.longitude)
-            let params : [String : String] = ["lat" : latitude , "lon" : longitude , "appid" : ApiKey]
-            
-            getWeatherData(url: WeayherUrl, parameters: params)
-            
+           
+            let params : [String : String] = ["q" : "karaj" , "appid" : ApiKey]
+            getWeatherData(url: WeayherUrl, parameters: params) 
         
         }
     
@@ -137,7 +136,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
     func updateWeatherData (json : JSON) {
         
         if let tempResult = json["list"][0]["main"]["temp"].double{
-            print("temp is in \(tempResult)")
+            
             currentWeather.tempreatureF = Double(tempResult - 273.15) * 1.8
             currentWeather.tempreatureC = Double(tempResult - 273.15)
             currentWeather.tempreature = currentWeather.tempreatureC
@@ -180,10 +179,20 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
     //MARK : - Implement Method Delegate
   
 func managedCity(city: String) {
-    
-    currentWeather.city = city
-    updateDataUI()
+ 
+    let params : [String : String] = ["q" : city , "appid" : ApiKey]
+    getWeatherData(url: WeayherUrl, parameters: params)
+ 
     
 }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.topViewController as? AddCityTableViewController {
+            vc.delegate = self
+
+        }
+
+    }
+
 
 }

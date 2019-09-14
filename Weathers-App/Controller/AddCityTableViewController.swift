@@ -21,6 +21,7 @@ class AddCityTableViewController: UITableViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         loadItem()
      
@@ -51,17 +52,35 @@ class AddCityTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        cityArray[indexPath.row].done = !cityArray[indexPath.row].done
+       
         let cityName = cityArray[indexPath.row].name
         delegate?.managedCity(city: cityName!)
         saveItem()
-        
-        tableView.deselectRow(at: indexPath, animated: true)
+        dismiss(animated: true, completion: nil)
         
     }
+
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
     
+    }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            // remove the item from the data model
+            context.delete(cityArray[indexPath.row])
+            cityArray.remove(at: indexPath.row)
+            
+            // delete the table view row
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            saveItem()
+            
+        }
+    }
+
     @IBAction func addButtonCity(_ sender: UIBarButtonItem!) {
         
         var textField = UITextField()
