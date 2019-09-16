@@ -26,32 +26,15 @@ class CurrentWeather {
     var summary : String = ""
     var iconName : String = ""
     var city : String = ""
- 
+    
     func updateWeatherIcon (rawValue : String) -> String {
         
-        if rawValue == "clear-day" {
-            return "clear-day"
-        }
-        if rawValue == "clear-night"{
-            return "clear-night"
-        }
-        //edame dadeshavad
+        let iconNameText = rawValue
         
         switch (rawValue) {
-        case "clear-day":
-            return "clear-day"
-        case "clear-night":
-            return "clear-night"
-        case "cloudy":
-            return "cloudy"
-        case "partly-cloudy-day" :
-            return "partly-cloudy-day"
-        case "rain":
-            return "rain"
-        case "snow":
-            return "snow"
-        case "wind":
-            return "wind"
+        case iconNameText :
+            return iconNameText
+    
         default:
             return "nothing"
         }

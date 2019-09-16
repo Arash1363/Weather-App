@@ -19,7 +19,6 @@ class AddCityTableViewController: UITableViewController {
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var delegate : ManageCityDelegate! = nil
     
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -45,7 +44,6 @@ class AddCityTableViewController: UITableViewController {
         
         let item = cityArray[indexPath.row]
         cell.textLabel?.text = item.name
-        cell.accessoryType = item.done ? .checkmark : .none
         
      return cell
      
@@ -90,7 +88,7 @@ class AddCityTableViewController: UITableViewController {
             
             let cityName = City(context: self.context)
             cityName.name = textField.text!
-            cityName.done = false
+        
             self.cityArray.append(cityName)
             
             self.saveItem()

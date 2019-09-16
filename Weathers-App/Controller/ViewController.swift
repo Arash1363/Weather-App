@@ -13,7 +13,6 @@ import SwiftyJSON
 
 class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityDelegate{
 
-
     //MARK:Define API
     
     fileprivate let ApiKey = "c26ca9f48d914e931409cc37b7736f03"
@@ -28,6 +27,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
     
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var tempreatureLabel: UILabel!
+    @IBOutlet weak var iconName: UIImageView!
     @IBOutlet weak var humidityPercent: UILabel!
     @IBOutlet weak var maxValue: UILabel!
     @IBOutlet weak var minValue: UILabel!
@@ -137,7 +137,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
         
         if let tempResult = json["list"][0]["main"]["temp"].double{
             
-            currentWeather.tempreatureF = Double(tempResult - 273.15) * 1.8
+            currentWeather.tempreatureF = Double((tempResult - 273.15) * 1.8)
             currentWeather.tempreatureC = Double(tempResult - 273.15)
             currentWeather.tempreature = currentWeather.tempreatureC
             currentWeather.minTempK = json["list"][0]["main"]["temp_min"].double!
@@ -153,9 +153,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
         currentWeather.humidity = json["list"][0]["main"]["humidity"].double!
         currentWeather.pressure = json["list"][0]["main"]["pressure"].double!
         currentWeather.iconName = json["list"][0]["weather"][0]["icon"].stringValue
-            
-        //currentWeather.iconName = currentWeather.updateWeatherIcon(rawValue: String)
-        print(currentWeather.iconName)
+
         updateDataUI()
         }
         else {
@@ -167,6 +165,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
 
     func updateDataUI () {
         
+        iconName.image = UIImage(named: currentWeather.iconName)
         cityName.text = currentWeather.city
         tempreatureLabel.text = String(currentWeather.tempreature)
         humidityPercent.text = String(currentWeather.humidity)
@@ -178,21 +177,21 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
     
     //MARK : - Implement Method Delegate
   
-func managedCity(city: String) {
+    func managedCity(city: String) {
  
     let params : [String : String] = ["q" : city , "appid" : ApiKey]
     getWeatherData(url: WeayherUrl, parameters: params)
- 
     
 }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let nav = segue.destination as? UINavigationController,
             let vc = nav.topViewController as? AddCityTableViewController {
             vc.delegate = self
 
         }
-
     }
+
 
 
 }
