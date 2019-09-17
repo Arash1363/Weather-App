@@ -22,7 +22,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
     
     let locationManager = CLLocationManager()
     var currentWeather = CurrentWeather()
-    
+    var activityIndicator = UIActivityIndicatorView()
     //MARK:Outlet
     
     @IBOutlet weak var cityName: UILabel!
@@ -33,6 +33,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
     @IBOutlet weak var minValue: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var segmentTempValue: UISegmentedControl!
+    @IBOutlet weak var RefreshButton: UIButton!
     
     //MARK:Actions
     
@@ -55,11 +56,21 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
     }
     
     @IBAction func reloadButton(_ sender: UIButton) {
-    
+    toggleRefreshAnimation(true)
         updateDataUI()
         
     }
-    
+    func toggleRefreshAnimation (_ on : Bool) {
+        
+        RefreshButton.isHidden = on
+        
+        if on {
+            activityIndicator.startAnimating()
+        }else {
+            activityIndicator.stopAnimating()
+            
+        }
+    }
     @IBAction func segmentChanged(_ sender: Any?) {
        
         let tempF = currentWeather.tempreatureF
@@ -71,13 +82,13 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
         
         if segmentTempValue.selectedSegmentIndex == 0 {
             
-            currentWeather.tempreature = tempC
+            currentWeather.tempreature = Int(tempC)
             currentWeather.minTemp = minTempC
             currentWeather.maxTemp = maxTempC
         }
         if segmentTempValue.selectedSegmentIndex == 1 {
             
-            currentWeather.tempreature = tempF
+            currentWeather.tempreature = Int(tempF)
             currentWeather.minTemp = minTempF
             currentWeather.maxTemp = maxTempF   
         }
@@ -139,19 +150,19 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
             
             currentWeather.tempreatureF = Double((tempResult - 273.15) * 1.8)
             currentWeather.tempreatureC = Double(tempResult - 273.15)
-            currentWeather.tempreature = currentWeather.tempreatureC
+            currentWeather.tempreature = Int(currentWeather.tempreatureC)
             currentWeather.minTempK = json["list"][0]["main"]["temp_min"].double!
             currentWeather.maxTempK = json["list"][0]["main"]["temp_max"].double!
-            currentWeather.minTempF = Double(currentWeather.minTempK - 273.15) * 1.8
-            currentWeather.minTempC = Double(currentWeather.minTempK - 273)
-            currentWeather.maxTempF = Double(currentWeather.maxTempK - 273.15) * 1.8
-            currentWeather.maxTempC = Double(currentWeather.maxTempK - 273.15)
+            currentWeather.minTempF = Int((currentWeather.minTempK - 273.15) * 1.8)
+            currentWeather.minTempC = Int(currentWeather.minTempK - 273.15)
+            currentWeather.maxTempF = Int((currentWeather.maxTempK - 273.15) * 1.8)
+            currentWeather.maxTempC = Int(currentWeather.maxTempK - 273.15)
             currentWeather.minTemp = currentWeather.minTempC
             currentWeather.maxTemp = currentWeather.maxTempC
             currentWeather.city = json["city"]["name"].stringValue
         currentWeather.summary = json["list"][0]["weather"][0]["description"].stringValue
-        currentWeather.humidity = json["list"][0]["main"]["humidity"].double!
-        currentWeather.pressure = json["list"][0]["main"]["pressure"].double!
+        currentWeather.humidity = json["list"][0]["main"]["humidity"].int!
+        currentWeather.pressure = json["list"][0]["main"]["pressure"].int!
         currentWeather.iconName = json["list"][0]["weather"][0]["icon"].stringValue
 
         updateDataUI()
@@ -167,11 +178,11 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
         
         iconName.image = UIImage(named: currentWeather.iconName)
         cityName.text = currentWeather.city
-        tempreatureLabel.text = String(currentWeather.tempreature)
-        humidityPercent.text = String(currentWeather.humidity)
+        tempreatureLabel.text = currentWeather.tempreatureStr
+        humidityPercent.text = currentWeather.humidityStr
         summaryLabel.text = currentWeather.summary
-        minValue.text = String(currentWeather.minTemp)
-        maxValue.text = String(currentWeather.maxTemp)
+        minValue.text = currentWeather.minTempValue
+        maxValue.text = currentWeather.maxTempValue
         
     }
     
@@ -191,7 +202,34 @@ class ViewController: UIViewController , CLLocationManagerDelegate , ManageCityD
 
         }
     }
+}
 
+//MARK : - Add Extension For Get Data From Weather Model
 
-
+extension CurrentWeather {
+    
+    var tempreatureStr : String {
+        
+        return "\(Int(tempreature))º"
+        
+    }
+    
+    var humidityStr : String {
+        
+        return "\(Int(humidity))%"
+    }
+    
+    var minTempValue : String {
+        
+        return "\(Int(minTemp))º"
+        
+    }
+    
+    var maxTempValue : String {
+        
+        return "\(Int(maxTemp))º"
+        
+    }
+    
+    
 }

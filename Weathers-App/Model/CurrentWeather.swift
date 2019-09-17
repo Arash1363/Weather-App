@@ -10,19 +10,19 @@ import Foundation
 
 class CurrentWeather {
     
-    var tempreature : Double = 0.0
+    var tempreature : Int = 0
     var tempreatureC : Double = 0.0
     var tempreatureF : Double = 0.0
-    var minTemp : Double = 0.0
-    var maxTemp : Double = 0.0
-    var minTempK : Double = 0.0
-    var minTempF : Double = 0.0
-    var minTempC : Double = 0.0
-    var maxTempK : Double = 0.0
-    var maxTempF : Double = 0.0
-    var maxTempC : Double = 0.0
-    var humidity : Double = 0.0
-    var pressure : Double = 0.0
+    var minTemp : Int = 0
+    var maxTemp : Int = 0
+    var minTempK : Double = 0
+    var minTempF : Int = 0
+    var minTempC : Int = 0
+    var maxTempK : Double = 0
+    var maxTempF : Int = 0
+    var maxTempC : Int = 0
+    var humidity : Int = 0
+    var pressure : Int = 0
     var summary : String = ""
     var iconName : String = ""
     var city : String = ""
