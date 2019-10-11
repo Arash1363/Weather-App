@@ -15,6 +15,7 @@
 		5BA59E2A230B1BBD00A144D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BA59E29230B1BBD00A144D7 /* Assets.xcassets */; };
 		5BA59E2D230B1BBD00A144D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA59E2B230B1BBD00A144D7 /* LaunchScreen.storyboard */; };
 		5BA59E36230B2BE600A144D7 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59E35230B2BE500A144D7 /* CurrentWeather.swift */; };
+		5BA8FCC32332CF340089D255 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BA8FCC22332CF340089D255 /* Icons.xcassets */; };
 		82DAEEBF68A1466BE3322683 /* Pods_Weathers_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AA5D3FF20CBB1530D3936F /* Pods_Weathers_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		5BA59E2C230B1BBD00A144D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BA59E2E230B1BBD00A144D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BA59E35230B2BE500A144D7 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
+		5BA8FCC22332CF340089D255 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		E93DF1C4B185757A487D2954 /* Pods-Weathers-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathers-App.debug.xcconfig"; path = "Target Support Files/Pods-Weathers-App/Pods-Weathers-App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 				5BA59E37230B2BEE00A144D7 /* View */,
 				5BA59E34230B2B0600A144D7 /* Model */,
 				5BA59E29230B1BBD00A144D7 /* Assets.xcassets */,
+				5BA8FCC22332CF340089D255 /* Icons.xcassets */,
 				5BA59E2E230B1BBD00A144D7 /* Info.plist */,
 			);
 			path = "Weathers-App";
@@ -184,6 +187,7 @@
 				5BA59E2D230B1BBD00A144D7 /* LaunchScreen.storyboard in Resources */,
 				5BA59E2A230B1BBD00A144D7 /* Assets.xcassets in Resources */,
 				5BA59E28230B1BBB00A144D7 /* Main.storyboard in Resources */,
+				5BA8FCC32332CF340089D255 /* Icons.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,9 +399,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Arash-app.Weathers-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Weathers-App";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -414,9 +418,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Arash-app.Weathers-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Weathers-App";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

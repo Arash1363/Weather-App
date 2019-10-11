@@ -19,11 +19,15 @@ class AddCityTableViewController: UITableViewController {
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var delegate : ManageCityDelegate! = nil
     
+    //MARK : - Define IBOutlet
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
         loadItem()
-     
+        
     }
 
     // MARK: - Table view data source
@@ -88,7 +92,7 @@ class AddCityTableViewController: UITableViewController {
             
             let cityName = City(context: self.context)
             cityName.name = textField.text!
-        
+     
             self.cityArray.append(cityName)
             
             self.saveItem()
@@ -104,6 +108,7 @@ class AddCityTableViewController: UITableViewController {
         
         alert.addAction(addAction)
         alert.addAction(cancelAction)
+
         present(alert, animated: true, completion: nil)
         
         }
